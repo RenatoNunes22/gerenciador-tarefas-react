@@ -6,7 +6,7 @@ import CustomInput from "./CustomInput";
 import { useAlert } from "react-alert";
 import axios from "axios";
 import Tasks from "./Tasks";
-const AddTask = () => {
+const AddTask = ({ fetchTasks }) => {
    const [task, setTask] = useState("");
    const alert = useAlert();
    const onChange = (e) => {
@@ -25,7 +25,11 @@ const AddTask = () => {
                isCompleted: false,
             }
          );
-      } catch (error) {}
+         await fetchTasks();
+         setTask("");
+      } catch (error) {
+         alert.error("Algo deu errado");
+      }
    };
    return (
       <div className="add-task-container">
