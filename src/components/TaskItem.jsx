@@ -10,7 +10,7 @@ const TaskItem = ({ task, fetchTasks }) => {
             `https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`
          );
          await fetchTasks();
-         alert.sucess("The task was successfully required");
+         alert.success("The task was successfully required");
       } catch (error) {
          alert.error("Something went wrong");
       }
@@ -24,7 +24,7 @@ const TaskItem = ({ task, fetchTasks }) => {
             }
          );
          await fetchTasks();
-         alert.sucess("The task was successfully modified");
+         alert.success("The task was successfully modified");
       } catch (error) {
          alert.error("Something went wrong");
       }
