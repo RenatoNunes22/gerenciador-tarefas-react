@@ -2,16 +2,20 @@ import "./TaskItem.scss";
 import axios from "axios";
 import { AiFillDelete } from "react-icons/ai";
 import { useAlert } from "react-alert";
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, fetchTasks }) => {
+   const alert = useAlert();
    const handleTaskDeletion = async () => {
       try {
          await axios.delete(
             `https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`
          );
+         await fetchTasks();
+         alert.sucess("The task was successfully required");
       } catch (error) {
-         alert.error("Algo deu errado");
+         alert.error("Something went wrong");
       }
    };
+
    return (
       <div className="task-item-container">
          <div className="task-description">
